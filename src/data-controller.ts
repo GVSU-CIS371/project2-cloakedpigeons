@@ -11,7 +11,21 @@ function generateProductHTML(product: Product): string {
 
 function renderProducts(prods: Product[]): void {
     // your code
+    const main_page = document.getElementById("main-container"); 
+    for (let prod of prods){
+        const prod_element = document.createElement("div");
+        const content_name = document.createElement("p");
+        content_name.innerText=prod.name;
+        const content_desc = document.createElement("p");
+        content_desc.innerText=prod.description;
+        prod_element.appendChild(content_name);
+        prod_element.appendChild(content_desc);
+        prod_element.className = "store-item";
+        main_page?.appendChild(prod_element);
+
+    }
 }
+
 
 function getByCategory(category: string): void {
     // your code
