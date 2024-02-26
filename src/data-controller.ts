@@ -9,10 +9,11 @@ function generateProductHTML(product: Product): string {
             </div>`;
 }
 
-function renderProducts(prods: Product[]): void {
+function renderProducts(products: Product[]): void {
     // your code
     const main_page = document.getElementById("main-container"); 
-    for (let prod of prods){
+    
+    for (let prod of products){
         // Create store item main container
         const prod_element = document.createElement("div");
         prod_element.className = "store-item";
@@ -52,11 +53,26 @@ function renderProducts(prods: Product[]): void {
 
 
 function getByCategory(category: string): void {
-    // your code
+     // Clear displayed products
+     const main_page = document.getElementById("main-container");
+     if (main_page){
+         main_page.innerHTML = '';
+     }
+    const filteredProducts : Product[] = products.filter((a)=>a.category==category);
+
+    renderProducts(filteredProducts);
 }
 
 function getByRating(minRating: number): void {
-    // your code
+    // Clear displayed products
+    const main_page = document.getElementById("main-container");
+    if (main_page){
+        main_page.innerHTML = '';
+    }
+    // Create a new products array with only the filtered by rating products
+    const filteredProducts = products.filter(product => product.rating > minRating);
+    // Render the products
+    renderProducts(filteredProducts);
 }
 
 export { renderProducts, getByCategory, getByRating };

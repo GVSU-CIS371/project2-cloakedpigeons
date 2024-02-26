@@ -27,8 +27,8 @@
       <script type="module">
         import { products } from './src/data.ts';
         import { renderProducts, getByCategory, getByRating } from './src/data-controller.ts';
+        
         renderProducts(products);
-
         // Bind click events using .addEventListener to the navigation links. Upon clicking:
 
         // - "Electronics" should display all products categorized as "Electronics."
@@ -38,6 +38,20 @@
 
         
         // your code
+        
+        document.getElementById("electronics").addEventListener("click",function(){
+          event.preventDefault(); 
+          getByCategory("Electronics")});
+        document.getElementById("clothing").addEventListener("click",function(){
+          event.preventDefault(); 
+          getByCategory("Clothing")});
+        document.getElementById("groceries").addEventListener("click",function(){
+          event.preventDefault(); 
+          getByCategory("Groceries")});
+        document.getElementById("bestSeller").addEventListener("click",function(){
+          event.preventDefault(); 
+          getByRating(4.5)});  
+        
       </script>
     </main>
     <footer>
