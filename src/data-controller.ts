@@ -13,16 +13,40 @@ function renderProducts(prods: Product[]): void {
     // your code
     const main_page = document.getElementById("main-container"); 
     for (let prod of prods){
+        // Create store item main container
         const prod_element = document.createElement("div");
-        const content_name = document.createElement("p");
-        content_name.innerText=prod.name;
-        const content_desc = document.createElement("p");
-        content_desc.innerText=prod.description;
-        prod_element.appendChild(content_name);
-        prod_element.appendChild(content_desc);
         prod_element.className = "store-item";
-        main_page?.appendChild(prod_element);
 
+        // Add image to store item
+        const prod_image = document.createElement("img");
+        prod_image.src = prod.image;
+
+        // Add name to store item
+        const prod_name = document.createElement("p");
+        prod_name.innerText = prod.name;
+
+        // Add description to store item
+        const prod_desc = document.createElement("p");
+        prod_desc.innerText = prod.description;
+
+        // Add the price, rating, and stock spans to store item
+        const prod_price = document.createElement("span");
+        prod_price.innerText = "$" + prod.price;
+        const prod_rating = document.createElement("span");
+        prod_rating.innerText = "rating: " + prod.rating+"/5";
+        const prod_stock = document.createElement("span");
+        prod_stock.innerText = "stock: " + prod.stock;
+
+        // Add items to store item
+        prod_element.appendChild(prod_image);
+        prod_element.appendChild(prod_name);
+        prod_element.appendChild(prod_desc);
+        prod_element.appendChild(prod_price);
+        prod_element.appendChild(prod_rating);
+        prod_element.appendChild(prod_stock);
+
+        // Add store item to main page
+        main_page?.appendChild(prod_element);
     }
 }
 
